@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-
 import { Plate, usePlateEditor } from 'platejs/react';
 
 import { EditorKit } from '@/components/editor/editor-kit';
@@ -15,15 +14,24 @@ export function PlateEditor() {
   });
 
   return (
-    <Plate editor={editor}>
-      <EditorContainer>
-        <Editor variant="demo" />
-      </EditorContainer>
+    <div className="flex flex-col h-full overflow-hidden"> {/* outer layout */}
+      <Plate editor={editor}>
+        {/* Sticky Toolbar - insert your actual toolbar here if any */}
+        {/* <Toolbar /> */}
 
-      <SettingsDialog />
-    </Plate>
+        {/* Scrollable content area */}
+        <div className="flex-1 overflow-auto">
+          <EditorContainer>
+            <Editor variant="demo" />
+          </EditorContainer>
+        </div>
+
+        <SettingsDialog />
+      </Plate>
+    </div>
   );
 }
+
 
 const value = [
   {
