@@ -1,66 +1,31 @@
-"use client"
+// src/app/dashboard/page.tsx (This is a Server Component, NO "use client")
+import { promises as fs } from "fs";
+import path from "path";
+import { z } from "zod";
+import { taskSchema } from "@/components/views/tasks/data/schema"; // Adjust path if needed
+import ClientDashboard from "./client-dashboard"; // Import the client component
 
-import { useState } from "react"
+// You can fetch all necessary data here, or pass functions to client components that will fetch on demand.
+// For simplicity, let's fetch tasks data here. You can extend this for other data.
+async function getTasksData() {
+  const data = await fs.readFile(
+    path.join(process.cwd(), "src/components/views/tasks/data/tasks.json")
+  );
+  const tasks = JSON.parse(data.toString());
+  return z.array(taskSchema).parse(tasks);
+}
 
-import { AppSidebar } from "@/components/dashboard/app-sidebar"
-import { SiteHeader } from "@/components/dashboard/site-header"
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
+// You can also move `getTasks` from `src/app/tasks/page.tsx` here,
+// or make `src/app/tasks/page.tsx` purely for rendering the data.
 
-import Notes from "@/components/views/notes/page"
-import TodoList from "@/components/views/todo-list/page"
-import Journal from "@/components/views/journal/page"
-import CalendarView from "@/components/views/calendar/page"
-import SearchView from "@/components/views/search/page"
-import AIChat from "@/components/views/ai-chat/page"
-import Insights from "@/components/views/insights/page"
-import Settings from "@/components/views/settings/page"
+export default async function DashboardPage() {
+  const initialTasks = await getTasksData(); // Fetch tasks on the server
 
-export default function Page() {
-  const [activeItem, setActiveItem] = useState("Notes")
-
-  const renderContent = () => {
-    switch (activeItem) {
-      case "Notes":
-        return <Notes />
-      case "To-Do List":
-        return <TodoList />
-      case "Journaling":
-        return <Journal />
-      case "Calendar":
-        return <CalendarView />
-      case "Search":
-        return <SearchView />
-      case "AI Chat":
-        return <AIChat />
-      case "Insights":
-        return <Insights />
-      case "Settings":
-        return <Settings />
-      default:
-        return <Notes />
-    }
-  }
+  // You would fetch other initial data here for Notes, TodoList, etc.
+  // const initialNotes = await getNotesData();
 
   return (
-    <SidebarProvider
-      style={
-        {
-          "--sidebar-width": "calc(var(--spacing) * 72)",
-          "--header-height": "calc(var(--spacing) * 12)",
-        } as React.CSSProperties
-      }
-    >
-      <AppSidebar activeItem={activeItem} onSelect={setActiveItem} variant="inset" />
-      <SidebarInset>
-        <SiteHeader title={activeItem} />
-        <div className="flex flex-1 flex-col">
-          <div className="@container/main flex flex-1 flex-col gap-2">
-            <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6 px-4 lg:px-6">
-              {renderContent()}
-            </div>
-          </div>
-        </div>
-      </SidebarInset>
-    </SidebarProvider>
-  )
+    // Pass the fetched data as props to your Client Component
+    <ClientDashboard initialTasks={initialTasks} /* initialNotes={initialNotes} */ />
+  );
 }

@@ -34,7 +34,7 @@ type AppSidebarProps = AppSidebarCustomProps &
 
 const navMain = [
   { title: "Notes", icon: IconNotes },
-  { title: "To-Do List", icon: IconChecklist },
+  { title: "Tasks", icon: IconChecklist },
   { title: "Journaling", icon: IconNotebook },
   { title: "Calendar", icon: IconCalendar },
 ]

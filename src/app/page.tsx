@@ -1,7 +1,5 @@
 export default function Home() {
   return (
-    <div>
-      hello
-    </div>
+    <h1>Hello There!, Welcome to Stratify 2!</h1>
   );
 }
