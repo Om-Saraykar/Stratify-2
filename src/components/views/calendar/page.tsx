@@ -6,14 +6,9 @@ import { CalendarProvider } from "@/app/event-calendar/components/event-calendar
 export default function CalendarView() {
   return (
     <CalendarProvider>
-      <SidebarProvider>
-        <AppSidebar />
-        <SidebarInset>
-          <div className="flex flex-1 flex-col gap-4 p-2 pt-0">
-            <BigCalendar />
-          </div>
-        </SidebarInset>
-      </SidebarProvider>
+      <div className="flex flex-1 flex-col gap-4 p-2 pt-0">
+        <BigCalendar />
+      </div>
     </CalendarProvider>
-  );
+  )
 }

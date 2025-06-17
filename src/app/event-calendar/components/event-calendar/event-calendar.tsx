@@ -39,14 +39,15 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/app/event-calendar/components/ui/button";
 import {
   DropdownMenu,
+  DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/app/event-calendar/components/ui/dropdown-menu";
-import { SidebarTrigger, useSidebar } from "@/app/event-calendar/components/ui/sidebar";
 import ThemeToggle from "@/app/event-calendar/components/theme-toggle";
-import Participants from "@/app/event-calendar/components/participants";
+import { etiquettes } from "../big-calendar";
+import React from "react";
 
 export interface EventCalendarProps {
   events?: CalendarEvent[];
@@ -72,7 +73,6 @@ export function EventCalendar({
   const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(
     null,
   );
-  const { open } = useSidebar();
 
   // Add keyboard shortcuts for view switching
   useEffect(() => {
@@ -264,6 +264,8 @@ export function EventCalendar({
     }
   }, [currentDate, view]);
 
+  const { isColorVisible, toggleColorVisibility } = useCalendarContext();
+
   return (
     <div
       className="flex has-data-[slot=month-view]:flex-1 flex-col rounded-lg"
@@ -278,22 +280,17 @@ export function EventCalendar({
       <CalendarDndProvider onEventUpdate={handleEventUpdate}>
         <div
           className={cn(
-            "flex flex-col sm:flex-row sm:items-center justify-between gap-2 py-5 sm:px-4",
+            "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-5 sm:px-4",
             className,
           )}
         >
           <div className="flex sm:flex-col max-sm:items-center justify-between gap-1.5">
             <div className="flex items-center gap-1.5">
-              <SidebarTrigger
-                data-state={open ? "invisible" : "visible"}
-                className="peer size-7 text-muted-foreground/80 hover:text-foreground/80 hover:bg-transparent! sm:-ms-1.5 lg:data-[state=invisible]:opacity-0 lg:data-[state=invisible]:pointer-events-none transition-opacity ease-in-out duration-200"
-                isOutsideSidebar
-              />
               <h2 className="font-semibold text-xl lg:peer-data-[state=invisible]:-translate-x-7.5 transition-transform ease-in-out duration-300">
                 {viewTitle}
               </h2>
             </div>
-            <Participants />
+            
           </div>
           <div className="flex items-center justify-between gap-2">
             <div className="flex items-center justify-between gap-2">
@@ -335,6 +332,60 @@ export function EventCalendar({
               >
                 New Event
               </Button>
+
+              {/* Calendars/Etiquettes Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className="gap-1.5 max-sm:h-8 max-sm:px-2! max-sm:gap-1"
+                  >
+                    Calendars
+                    <ChevronDownIcon
+                      className="-me-1 opacity-60"
+                      size={16}
+                      aria-hidden="true"
+                    />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="min-w-40">
+                  {etiquettes.map((item) => (
+                    <DropdownMenuItem
+                      key={item.id}
+                      // Use onSelect to handle the click and prevent closing if desired
+                      onSelect={(e) => {
+                        // This prevents the dropdown from closing immediately after selection.
+                        // Remove e.preventDefault() if you want the dropdown to close on each selection.
+                        e.preventDefault();
+                        toggleColorVisibility(item.color);
+                      }}
+                      // Add a cursor pointer for better UX, as it's clickable
+                      className="cursor-pointer"
+                    >
+                      <span className="font-medium flex items-center gap-3 w-full">
+                        {/* Color dot on the left */}
+                        <span
+                          className="size-2 rounded-full" // Adjusted size slightly for better visibility
+                          style={
+                            {
+                              backgroundColor: `var(--color-${item.color}-400)`,
+                            } as React.CSSProperties
+                          }
+                        ></span>
+                        {/* Label with conditional line-through based on visibility */}
+                        <span
+                          className={cn(
+                            "flex-1", // Allows the label to take available space
+                            !isColorVisible(item.color) && "line-through text-muted-foreground/65"
+                          )}
+                        >
+                          {item.name}
+                        </span>
+                      </span>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
@@ -364,7 +415,6 @@ export function EventCalendar({
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
-              <ThemeToggle />
             </div>
           </div>
         </div>
