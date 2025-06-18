@@ -35,7 +35,7 @@ export function PlateEditor() {
 
 const value = [
   {
-    children: [{ text: 'Welcome to the Plate Playground!' }],
+    children: [{ text: 'Welcome to Stratify!' }],
     type: 'h1',
   },
   {
@@ -309,219 +309,219 @@ const value = [
     ],
     type: 'p',
   },
-  // Table Section
-  {
-    children: [{ text: 'How Plate Compares' }],
-    type: 'h3',
-  },
-  {
-    children: [
-      {
-        text: 'Plate offers many features out-of-the-box as free, open-source plugins.',
-      },
-    ],
-    type: 'p',
-  },
-  {
-    children: [
-      {
-        children: [
-          {
-            children: [
-              { children: [{ bold: true, text: 'Feature' }], type: 'p' },
-            ],
-            type: 'th',
-          },
-          {
-            children: [
-              {
-                children: [{ bold: true, text: 'Plate (Free & OSS)' }],
-                type: 'p',
-              },
-            ],
-            type: 'th',
-          },
-          {
-            children: [
-              { children: [{ bold: true, text: 'Tiptap' }], type: 'p' },
-            ],
-            type: 'th',
-          },
-        ],
-        type: 'tr',
-      },
-      {
-        children: [
-          {
-            children: [{ children: [{ text: 'AI' }], type: 'p' }],
-            type: 'td',
-          },
-          {
-            children: [
-              {
-                attributes: { align: 'center' },
-                children: [{ text: '✅' }],
-                type: 'p',
-              },
-            ],
-            type: 'td',
-          },
-          {
-            children: [{ children: [{ text: 'Paid Extension' }], type: 'p' }],
-            type: 'td',
-          },
-        ],
-        type: 'tr',
-      },
-      {
-        children: [
-          {
-            children: [{ children: [{ text: 'Comments' }], type: 'p' }],
-            type: 'td',
-          },
-          {
-            children: [
-              {
-                attributes: { align: 'center' },
-                children: [{ text: '✅' }],
-                type: 'p',
-              },
-            ],
-            type: 'td',
-          },
-          {
-            children: [{ children: [{ text: 'Paid Extension' }], type: 'p' }],
-            type: 'td',
-          },
-        ],
-        type: 'tr',
-      },
-      {
-        children: [
-          {
-            children: [{ children: [{ text: 'Suggestions' }], type: 'p' }],
-            type: 'td',
-          },
-          {
-            children: [
-              {
-                attributes: { align: 'center' },
-                children: [{ text: '✅' }],
-                type: 'p',
-              },
-            ],
-            type: 'td',
-          },
-          {
-            children: [
-              { children: [{ text: 'Paid (Comments Pro)' }], type: 'p' },
-            ],
-            type: 'td',
-          },
-        ],
-        type: 'tr',
-      },
-      {
-        children: [
-          {
-            children: [{ children: [{ text: 'Emoji Picker' }], type: 'p' }],
-            type: 'td',
-          },
-          {
-            children: [
-              {
-                attributes: { align: 'center' },
-                children: [{ text: '✅' }],
-                type: 'p',
-              },
-            ],
-            type: 'td',
-          },
-          {
-            children: [{ children: [{ text: 'Paid Extension' }], type: 'p' }],
-            type: 'td',
-          },
-        ],
-        type: 'tr',
-      },
-      {
-        children: [
-          {
-            children: [
-              { children: [{ text: 'Table of Contents' }], type: 'p' },
-            ],
-            type: 'td',
-          },
-          {
-            children: [
-              {
-                attributes: { align: 'center' },
-                children: [{ text: '✅' }],
-                type: 'p',
-              },
-            ],
-            type: 'td',
-          },
-          {
-            children: [{ children: [{ text: 'Paid Extension' }], type: 'p' }],
-            type: 'td',
-          },
-        ],
-        type: 'tr',
-      },
-      {
-        children: [
-          {
-            children: [{ children: [{ text: 'Drag Handle' }], type: 'p' }],
-            type: 'td',
-          },
-          {
-            children: [
-              {
-                attributes: { align: 'center' },
-                children: [{ text: '✅' }],
-                type: 'p',
-              },
-            ],
-            type: 'td',
-          },
-          {
-            children: [{ children: [{ text: 'Paid Extension' }], type: 'p' }],
-            type: 'td',
-          },
-        ],
-        type: 'tr',
-      },
-      {
-        children: [
-          {
-            children: [
-              { children: [{ text: 'Collaboration (Yjs)' }], type: 'p' },
-            ],
-            type: 'td',
-          },
-          {
-            children: [
-              {
-                attributes: { align: 'center' },
-                children: [{ text: '✅' }],
-                type: 'p',
-              },
-            ],
-            type: 'td',
-          },
-          {
-            children: [
-              { children: [{ text: 'Hocuspocus (OSS/Paid)' }], type: 'p' },
-            ],
-            type: 'td',
-          },
-        ],
-        type: 'tr',
-      },
-    ],
-    type: 'table',
-  },
+  // // Table Section
+  // {
+  //   children: [{ text: 'How Plate Compares' }],
+  //   type: 'h3',
+  // },
+  // {
+  //   children: [
+  //     {
+  //       text: 'Plate offers many features out-of-the-box as free, open-source plugins.',
+  //     },
+  //   ],
+  //   type: 'p',
+  // },
+  // {
+  //   children: [
+  //     {
+  //       children: [
+  //         {
+  //           children: [
+  //             { children: [{ bold: true, text: 'Feature' }], type: 'p' },
+  //           ],
+  //           type: 'th',
+  //         },
+  //         {
+  //           children: [
+  //             {
+  //               children: [{ bold: true, text: 'Plate (Free & OSS)' }],
+  //               type: 'p',
+  //             },
+  //           ],
+  //           type: 'th',
+  //         },
+  //         {
+  //           children: [
+  //             { children: [{ bold: true, text: 'Tiptap' }], type: 'p' },
+  //           ],
+  //           type: 'th',
+  //         },
+  //       ],
+  //       type: 'tr',
+  //     },
+  //     {
+  //       children: [
+  //         {
+  //           children: [{ children: [{ text: 'AI' }], type: 'p' }],
+  //           type: 'td',
+  //         },
+  //         {
+  //           children: [
+  //             {
+  //               attributes: { align: 'center' },
+  //               children: [{ text: '✅' }],
+  //               type: 'p',
+  //             },
+  //           ],
+  //           type: 'td',
+  //         },
+  //         {
+  //           children: [{ children: [{ text: 'Paid Extension' }], type: 'p' }],
+  //           type: 'td',
+  //         },
+  //       ],
+  //       type: 'tr',
+  //     },
+  //     {
+  //       children: [
+  //         {
+  //           children: [{ children: [{ text: 'Comments' }], type: 'p' }],
+  //           type: 'td',
+  //         },
+  //         {
+  //           children: [
+  //             {
+  //               attributes: { align: 'center' },
+  //               children: [{ text: '✅' }],
+  //               type: 'p',
+  //             },
+  //           ],
+  //           type: 'td',
+  //         },
+  //         {
+  //           children: [{ children: [{ text: 'Paid Extension' }], type: 'p' }],
+  //           type: 'td',
+  //         },
+  //       ],
+  //       type: 'tr',
+  //     },
+  //     {
+  //       children: [
+  //         {
+  //           children: [{ children: [{ text: 'Suggestions' }], type: 'p' }],
+  //           type: 'td',
+  //         },
+  //         {
+  //           children: [
+  //             {
+  //               attributes: { align: 'center' },
+  //               children: [{ text: '✅' }],
+  //               type: 'p',
+  //             },
+  //           ],
+  //           type: 'td',
+  //         },
+  //         {
+  //           children: [
+  //             { children: [{ text: 'Paid (Comments Pro)' }], type: 'p' },
+  //           ],
+  //           type: 'td',
+  //         },
+  //       ],
+  //       type: 'tr',
+  //     },
+  //     {
+  //       children: [
+  //         {
+  //           children: [{ children: [{ text: 'Emoji Picker' }], type: 'p' }],
+  //           type: 'td',
+  //         },
+  //         {
+  //           children: [
+  //             {
+  //               attributes: { align: 'center' },
+  //               children: [{ text: '✅' }],
+  //               type: 'p',
+  //             },
+  //           ],
+  //           type: 'td',
+  //         },
+  //         {
+  //           children: [{ children: [{ text: 'Paid Extension' }], type: 'p' }],
+  //           type: 'td',
+  //         },
+  //       ],
+  //       type: 'tr',
+  //     },
+  //     {
+  //       children: [
+  //         {
+  //           children: [
+  //             { children: [{ text: 'Table of Contents' }], type: 'p' },
+  //           ],
+  //           type: 'td',
+  //         },
+  //         {
+  //           children: [
+  //             {
+  //               attributes: { align: 'center' },
+  //               children: [{ text: '✅' }],
+  //               type: 'p',
+  //             },
+  //           ],
+  //           type: 'td',
+  //         },
+  //         {
+  //           children: [{ children: [{ text: 'Paid Extension' }], type: 'p' }],
+  //           type: 'td',
+  //         },
+  //       ],
+  //       type: 'tr',
+  //     },
+  //     {
+  //       children: [
+  //         {
+  //           children: [{ children: [{ text: 'Drag Handle' }], type: 'p' }],
+  //           type: 'td',
+  //         },
+  //         {
+  //           children: [
+  //             {
+  //               attributes: { align: 'center' },
+  //               children: [{ text: '✅' }],
+  //               type: 'p',
+  //             },
+  //           ],
+  //           type: 'td',
+  //         },
+  //         {
+  //           children: [{ children: [{ text: 'Paid Extension' }], type: 'p' }],
+  //           type: 'td',
+  //         },
+  //       ],
+  //       type: 'tr',
+  //     },
+  //     {
+  //       children: [
+  //         {
+  //           children: [
+  //             { children: [{ text: 'Collaboration (Yjs)' }], type: 'p' },
+  //           ],
+  //           type: 'td',
+  //         },
+  //         {
+  //           children: [
+  //             {
+  //               attributes: { align: 'center' },
+  //               children: [{ text: '✅' }],
+  //               type: 'p',
+  //             },
+  //           ],
+  //           type: 'td',
+  //         },
+  //         {
+  //           children: [
+  //             { children: [{ text: 'Hocuspocus (OSS/Paid)' }], type: 'p' },
+  //           ],
+  //           type: 'td',
+  //         },
+  //       ],
+  //       type: 'tr',
+  //     },
+  //   ],
+  //   type: 'table',
+  // },
   // Media Section
   {
     children: [{ text: 'Images and Media' }],
