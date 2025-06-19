@@ -576,16 +576,4 @@ const value = [
     type: 'audio',
     url: 'https://samplelib.com/lib/preview/mp3/sample-3s.mp3',
   },
-  {
-    children: [{ text: 'Table of Contents' }],
-    type: 'h3',
-  },
-  {
-    children: [{ text: '' }],
-    type: 'toc',
-  },
-  {
-    children: [{ text: '' }],
-    type: 'p',
-  },
 ];
