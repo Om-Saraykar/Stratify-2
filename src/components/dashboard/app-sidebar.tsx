@@ -24,9 +24,16 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
+// Import Session and User types from next-auth
+import { Session } from "next-auth"; // You might need to import Session directly
+// Or if you want just the User type:
+// import { User as NextAuthUser } from "next-auth";
+
+
 interface AppSidebarCustomProps {
-  activeItem: string
-  onSelect: (item: string) => void
+  activeItem: string;
+  onSelect: (item: string) => void;
+  session: Session | null; // <--- Add session prop here, it can be null if not logged in
 }
 
 type AppSidebarProps = AppSidebarCustomProps &
@@ -46,7 +53,14 @@ const navSecondary = [
   { title: "Settings", icon: IconSettings },
 ]
 
-export function AppSidebar({ activeItem, onSelect, ...props }: AppSidebarProps) {
+export function AppSidebar({ activeItem, onSelect, session, ...props }: AppSidebarProps) {
+  // Extract user data from session, providing fallbacks
+  const user = session?.user;
+  const userName = user?.name || "Guest User";
+  const userEmail = user?.email || "guest@example.com";
+  // NextAuth's `image` property in Session.user typically holds the avatar URL
+  const userAvatar = user?.image || "/avatars/default.jpg"; // Provide a default local avatar path
+
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
@@ -108,9 +122,9 @@ export function AppSidebar({ activeItem, onSelect, ...props }: AppSidebarProps) 
       <SidebarFooter>
         <NavUser
           user={{
-            name: "Stratify User",
-            email: "user@example.com",
-            avatar: "/avatars/default.jpg",
+            name: userName, // <--- Pass dynamic name
+            email: userEmail, // <--- Pass dynamic email
+            avatar: userAvatar, // <--- Pass dynamic avatar
           }}
         />
       </SidebarFooter>

@@ -2,17 +2,14 @@
 "use client"; // IMPORTANT: Keep this directive!
 
 import { useState } from "react";
+import { Session } from "next-auth";
 
 import { AppSidebar } from "@/components/dashboard/app-sidebar";
 import { SiteHeader } from "@/components/dashboard/site-header";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
-// Import your view components.
-// IMPORTANT: These components (Notes, TodoList, Tasks, etc.)
-// should now be designed to accept *props* with the data they need,
-// rather than fetching it themselves if they are rendered by a client component.
 import Notes from "@/components/views/notes/page";
-import Tasks from "@/components/views/tasks/page"; // This Tasks component needs adjustment
+import Tasks from "@/components/views/tasks/page";
 import Journal from "@/components/views/journal/page";
 import CalendarView from "@/components/views/calendar/page";
 import SearchView from "@/components/views/search/page";
@@ -20,19 +17,21 @@ import AIChat from "@/components/views/ai-chat/page";
 import Insights from "@/components/views/insights/page";
 import Settings from "@/components/views/settings/page";
 
-// Define the props for your ClientDashboard
+// It's good practice to define the exact type for tasks, e.g., from your schema
+// import { Task } from "@/components/views/tasks/data/schema";
+
 interface ClientDashboardProps {
-  initialTasks: any[]; // Use the actual type for tasks
-  // Add props for other initial data here
+  initialTasks: any[]; // Consider using a more specific type like `Task[]` if defined
+  session: Session; // Add the session prop here
 }
 
-export default function ClientDashboard({ initialTasks }: ClientDashboardProps) {
-  const [activeItem, setActiveItem] = useState("Notes"); 
+export default function ClientDashboard({ initialTasks, session }: ClientDashboardProps) {
+  const [activeItem, setActiveItem] = useState("Notes");
 
   const renderContent = () => {
     switch (activeItem) {
       case "Notes":
-        return <Notes />; // If Notes needs data, pass it here from props
+        return <Notes />;
       case "Tasks":
         return <Tasks data={initialTasks} />;
       case "Journaling":
@@ -61,7 +60,7 @@ export default function ClientDashboard({ initialTasks }: ClientDashboardProps) 
         } as React.CSSProperties
       }
     >
-      <AppSidebar activeItem={activeItem} onSelect={setActiveItem} variant="inset" />
+      <AppSidebar activeItem={activeItem} onSelect={setActiveItem} variant="inset" session={session} />
       <SidebarInset>
         <SiteHeader title={activeItem} />
         <div className="flex flex-1 flex-col">
